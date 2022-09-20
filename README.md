@@ -10,9 +10,14 @@ CNN and ML models used in this contribution are provided in this project in the 
 ### VTM10.2 + Complexity reduction:
 
  - Clone VTM10.2 from https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/tree/VTM-10.2
+ ```sh
+ git clone https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM.git
+ cd VVCSoftware_VTM
+ git checkout VTM-10.2
+ ```
  - Apply the patch diff_patch.txt on the VVCSoftware_VTM folder
  ```sh
-patch -s -p6 diff_patch.txt
+git apply ../patchfile.patch
 ```
  - Install frugally deep following this: https://github.com/Dobiasd/frugally-deep/blob/master/INSTALL.md
  - Download and build LightGBM 2.3.2 from Microsoft's git:
