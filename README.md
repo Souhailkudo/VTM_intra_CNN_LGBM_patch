@@ -15,7 +15,7 @@ CNN and ML models used in this contribution are provided in this project in the 
  cd VVCSoftware_VTM
  git checkout VTM-10.2
  ```
- - Apply the patch diff_patch.txt on the VVCSoftware_VTM folder
+ - Apply the patch
  ```sh
 git apply ../patchfile.patch
 ```
