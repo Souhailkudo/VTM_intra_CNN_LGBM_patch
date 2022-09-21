@@ -30,10 +30,8 @@ cd build
 cmake ..
 make
 ```
-- In VVCSoftware_VTM/CMakeLists.txt: replace LGBM_DIRECTORY_HERE by the directory of LightGBM folder
-- In VVCSoftware/source/App/EncoderApp/encmain.cpp: replace MODEL_DIRECTORY_HERE by the directory of the folder models
-- In VVCSoftware/source/Lib/EncoderLib/PartitionPrediction.cpp: replace MODEL_DIRECTORY_HERE by the directory of the folder models 
-- Build the VTM project as shown in its readme and test it out, To use the complexity reduction in intra you can either add "-pp" or add "PredictPartition: 1" in the "encoder_intra_vtm.cfg"
+
+- Build the VTM project as shown in its readme and test it out, To use the complexity reduction in intra you can either add "-pp" or add "PredictPartition: 1" in the "encoder_intra_vtm.cfg". The folder containing the models should be added as a parameter, either by using -mf [folder_path] or by adding it in the same cfg file "ModelFolder : [folder_path]".
 
 ### Training the DL model:
 The file DLTraining.py can be used to train the DL model by providing the dataset folder and an output folder, dataset folder should contain 2 folders: "images_npy", each folder contains a folder named "luma", and each luma folder contains 4 folders: "22", "27", "32" and "37", each folders refers to a QP value. These QP folders would contain the data in the form of .npy files (numpy arrays saved using np.save). Files in "images_npy" QP folders are Luma CTUs (68x68) whereas files in "ground_truth_npy" QP folders are ground truth vectors of size 480. Each ground_truth should have the same name as its corresponding CTU. 
