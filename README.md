@@ -9,16 +9,6 @@ CNN and ML models used in this contribution are provided in this project in the 
 
 ### VTM10.2 + Complexity reduction:
 
- - Clone VTM10.2 from https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM/-/tree/VTM-10.2
- ```sh
- git clone https://vcgit.hhi.fraunhofer.de/jvet/VVCSoftware_VTM.git
- cd VVCSoftware_VTM
- git checkout VTM-10.2
- ```
- - Apply the patch
- ```sh
-git apply ../patchfile.patch
-```
  - Install frugally deep following this: https://github.com/Dobiasd/frugally-deep/blob/master/INSTALL.md
  - Download and build LightGBM 2.3.2 from Microsoft's git:
  ```sh
@@ -30,8 +20,9 @@ cd build
 cmake ..
 make
 ```
-
+- For LightGBM to work with VTM the correct directory needs to be specified in the CMakeLists.txt of the VTM project. The directory is currently set locally to the VTM directory (../LightGBM), change it if needed. 
 - Build the VTM project as shown in its readme and test it out, To use the complexity reduction in intra you can either add "-pp" or add "PredictPartition: 1" in the "encoder_intra_vtm.cfg". The folder containing the models should be added as a parameter, either by using -mf [folder_path] or by adding it in the same cfg file "ModelFolder : [folder_path]".
+
 
 ### Training the DL model:
 The file DLTraining.py can be used to train the DL model by providing the dataset folder and an output folder, dataset folder should contain 2 folders: "images_npy", each folder contains a folder named "luma", and each luma folder contains 4 folders: "22", "27", "32" and "37", each folders refers to a QP value. These QP folders would contain the data in the form of .npy files (numpy arrays saved using np.save). Files in "images_npy" QP folders are Luma CTUs (68x68) whereas files in "ground_truth_npy" QP folders are ground truth vectors of size 480. Each ground_truth should have the same name as its corresponding CTU. 
